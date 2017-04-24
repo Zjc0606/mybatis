@@ -6,6 +6,12 @@
 注意：使用mapper代理方法开发，namespace有特殊重要的作用,namespace等于mapper接口的地址
 -->
 <mapper namespace="com.zjc.mybatis.mapper.UserMapper">
+    <!-- 开启本mapper的namespace下的二缓存
+	type：指定cache接口的实现类的类型，mybatis默认使用PerpetualCache
+	要和ehcache整合，需要配置type为ehcache实现cache接口的类型
+	 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
     <!-- 定义sql片段
 	id：sql片段的唯 一标识
 
@@ -86,7 +92,7 @@
          -->
         <where>
             <!-- 引用sql片段 的id，如果refid指定的id不在本mapper文件中，需要前边加namespace -->
-            <include refid="query_user_where"></include>
+            <include refid="query_user_where"/>
             <!-- 在这里还要引用其它的sql片段  -->
         </where>
     </select>
@@ -101,7 +107,7 @@
          -->
         <where>
             <!-- 引用sql片段 的id，如果refid指定的id不在本mapper文件中，需要前边加namespace -->
-            <include refid="query_user_where"></include>
+            <include refid="query_user_where"/>
             <!-- 在这里还要引用其它的sql片段  -->
         </where>
     </select>

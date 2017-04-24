@@ -1,18 +1,22 @@
 package com.zjc.mybatis.po;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by zjc on 2017/4/18.
  *
  */
-public class User {
+public class User implements Serializable{
     //属性名和数据库表的字段对应
     private int id;
     private String username;// 用户姓名
     private String sex;// 性别
     private Date birthday;// 生日
     private String address;// 地址
+    //用户创建的订单列表
+    private List<Orders> ordersList;
 
     public int getId() {
         return id;
@@ -52,6 +56,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 
     @Override
